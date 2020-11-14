@@ -62,8 +62,6 @@ var a = 8;
 a += '10';
 console.log(a);  // 输出：810
 
-
-
 </section>
 
 ## Instructions
