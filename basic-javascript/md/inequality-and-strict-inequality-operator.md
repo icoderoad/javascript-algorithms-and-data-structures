@@ -14,10 +14,6 @@ title: 不等与严格不等运算符
 	
 不等与严格不等运算符。
 
-
-
-## Instructions
-<section id='instructions'>
 不等运算符（!=）与相等运算符是相反的。这意味着不相等运算符中，如果“不为真”并且返回 false 的地方，在相等运算符中会返回 true ，反之亦然。与相等运算符类似，不相等运算符在比较的时候也会转换值的数据类型。
 
 语法如下所示：
@@ -55,6 +51,11 @@ function testStrictNotEqual(val) {
 
 console.log( testStrictNotEqual(10) ); // => 不等
 console.log( testStrictNotEqual(88) ); // => 相等
+
+
+## Instructions
+<section id='instructions'>
+
 </section>
 
 ## Tests
