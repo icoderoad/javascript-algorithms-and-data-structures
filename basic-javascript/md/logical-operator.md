@@ -22,28 +22,31 @@ title: 逻辑运算符
 
 表达式1 && 表达式2
 
-如果 表达式1 可以转换为 true，则返回 表达式2; 否则， 返回 表达式1 。
+如果 表达式1 可以转换为 true，则返回 表达式2; 否则，返回 表达式1 。
 
 有时你需要在一次判断中做多个操作。当且仅当运算符的左边和右边都是 true，逻辑与运算符（&&）才会返回 true。
 
-只有当 num 的值在 6 和 9 之间（包括 6 和 9）才会返回 "正常"。相同的逻辑可被写为以下 checkNum 函数：
+只有当 num 的值在 5 和 10 之间（不包括 5 和 10）才会返回 "正常"。相同的逻辑可被写为以下 checkNum 函数：
 
-function checkNum( num ) {
-  if (num > 5 && num < 10) {
-    return "正常";
-  }
-  return "异常";
-}
-console.log(checkNum(8)); // => 正常
-console.log(checkNum(13));  // => 异常
-
-同样的效果可以通过 if 语句的嵌套来实现：
+常规条件语句函数如下所示：
 
 function checkNum( num ) {
   if (num > 5) {
     if (num < 10) {
       return "正常";
     }
+  }
+  return "异常";
+}
+console.log(checkNum(8)); // => 正常
+console.log(checkNum(13));  // => 异常
+
+
+相同的逻辑可以通过逻辑与(&&)简写成如下函数：
+
+function checkNum( num ) {
+  if (num > 5 && num < 10) {
+    return "正常";
   }
   return "异常";
 }
@@ -84,7 +87,6 @@ function checkNum( num ){
 }
 console.log(checkNum(18)); // => 异常
 console.log(checkNum(7)); // => 正常
-
 
 
 ## Instructions
