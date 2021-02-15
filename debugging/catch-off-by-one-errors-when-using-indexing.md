@@ -23,17 +23,17 @@ let alphabet = "abcdefghijklmnopqrstuvwxyz";
 let len = alphabet.length;
 for (let i = 0; i <= len; i++) {
   // 在最后多了一次循环
-  console.log(alphabet[i]);
+  console.log( alphabet[i] );
 }
 
 for (let j = 1; j < len; j++) {
   // 循环少了一次，漏掉了索引 0 处的字符
-  console.log(alphabet[j]);
+  console.log( alphabet[j] );
 }
 
 for (let k = 0; k < len; k++) {
   // 不多不少，这才是正确的
-  console.log(alphabet[k]);
+  console.log( alphabet[k] );
 }
 
 以上代码在控制台执行，第一个循环执行后，执行到最后一次循环时，由于索引值超出了字符串长度，执行结果返回 undefined。第 2 个循环由于从 1 开始执行，控制台打印的执行结果少了字母 a，控制台打印的结果是从 b 到 z。第三个循环正确输出从 a 到 z 的所有字符。注意第 3 个正确循环的变量 k 的条件设置，变量 k 从 0 开始，结束条件是循环变量小于字符串长度，不包括字符串长度。
