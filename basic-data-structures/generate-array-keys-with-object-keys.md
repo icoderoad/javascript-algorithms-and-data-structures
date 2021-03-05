@@ -67,7 +67,7 @@ console.log(getArrayFromSitesKey( Sites ));
 // => (7) ["163", "icoderoad", "alipay", "sohu", "qq", "cctv", "weibo"]
 
 以上代码定义了方法 getArrayFromSitesKey， 参数为 obj, getArrayFromSitesKey，方法中调用 Object.keys 方法，返回 obj 对象所有属性组成的新数组。将返回值打印在控制台，控制台最终输出结果为 ‘(7) ["163", "icoderoad", "alipay", "sohu", "qq", "cctv", "weibo"]’。
-经过输出结果比较，我们可以发现返回数组中的值为 Sites对象的所有属性值。
+经过输出结果比较，我们可以发现返回数组中的值为 Sites 对象的所有属性值。
 
 
 </section>
