@@ -15,52 +15,47 @@ title: 了解函数式编程术语
 
 了解函数式编程术语
 
-函数式编程是一种基于函数评估的软件开发方法。像数学一样，编程中的函数把输入映射到输出，从而产生一个结果。您可以通过多种方式组合基本函数来构建越来越复杂的程序。
+随着需求讨论的深入，我朋友销售的奶茶，现在想要增加两个新品奶茶：红西柚（Red grapefruit）和木瓜（papaya）。根据朋友新的需求，我们需要重构上篇文章中的 getTea 函数来处理多种奶茶的请求。我们可以修改 getTea 接受一个函数作为参数，使它能够修改奶茶的类型。这让 getTea 更灵活，也使需求变更时为程序员提供更多控制权。
 
-函数式编程遵循以下几个核心原则：
+首先，我们将介绍一些术语：
 
-函数独立于程序状态或全局变量。他们只依赖传入他们的参数来进行计算；
+Callbacks 是被传递到另一个函数中调用的函数。您应该已经在其他函数中看过这个写法，例如在 filter 中，回调函数告诉 JavaScript 以什么规则过滤数组。
 
-函数试图限制对程序状态的任何更改，并避免对保存数据的全局对象进行更改；
+函数就像其他正常值一样，可以赋值给变量、传递给另一个函数，或从其它函数返回，这种函数叫做头等函数。在 JavaScript 中，所有函数都是头等函数。
 
-函数在程序中的副作用最小；
+一个返回另外一个函数的函数被称为高阶函数
 
-函数式编程软件开发方法将程序分解为小的、可测试的部分；
+当函数传递给另一个函数或从另一个函数返回时，那些传入或返回的函数可以叫做 lambda。
 
-函数式编程是一种方案简单、功能独立、对作用域外没有任何副作用的编程范式。
+下面我们继续根据实际场景需求进行程序调整优化，具体场景如下所示：
 
-INPUT -> PROCESS -> OUTPUT
+现在学生要团购 18 杯红西柚奶茶和 26 杯木瓜奶茶，分别下单，我们将两单分别存在 teaOrder1 和 teaOrder2  变量中。优化的完整代码如下所示：
 
-函数式编程：
+const redGrapefruitTea = () => 'redGrapefruit';
 
-1）功能独立——不依赖于程序的状态（比如可能发生变化的全局变量）；
+const papayaTea = () => 'papayaTea';
 
-2）纯函数——同一个输入永远能得到同一个输出；
-
-3）有限的副作用——可以严格地限制函数外部对状态的更改。
-
-
-下面我们介绍一个完整的例子，我朋友是卖奶茶的，我准备使用程序为他定制一个奶茶外卖小程序，使用函数式编程方法，按订单数量，返回预订的奶茶订单。
-具体代码实现如下所示：
-
-const milkTea = () => "milkTea";
-
-const getTea = numOfCups => {
+const getTea = (saleTea, num) => {
   const teaCups = [];
 
-  for (let cups = 1; cups <= numOfCups; cups ++) {
-    const teaCup = milkTea();
+  for(let cups = 1; cups <= num; cups ++) {
+    const teaCup = saleTea();
     teaCups.push(teaCup);
   }
 
   return teaCups;
 };
 
-const milkTeaOrders = getTea(6); 
+const teaOrder1 = getTea(redGrapefruitTea,18);
+const teaOrder2 = getTea(papayaTea,26);
 
-console.log(milkTeaOrders);
+console.log(
+  teaOrder1,
+  teaOrder2
+);
+// => (18) ["redGrapefruit", "redGrapefruit", "redGrapefruit", "redGrapefruit", "redGrapefruit", "redGrapefruit", "redGrapefruit", "redGrapefruit", "redGrapefruit", "redGrapefruit", "redGrapefruit", "redGrapefruit", "redGrapefruit", "redGrapefruit", "redGrapefruit", "redGrapefruit", "redGrapefruit", "redGrapefruit"] (26) ["papayaTea", "papayaTea", "papayaTea", "papayaTea", "papayaTea", "papayaTea", "papayaTea", "papayaTea", "papayaTea", "papayaTea", "papayaTea", "papayaTea", "papayaTea", "papayaTea", "papayaTea", "papayaTea", "papayaTea", "papayaTea", "papayaTea", "papayaTea", "papayaTea", "papayaTea", "papayaTea", "papayaTea", "papayaTea", "papayaTea"]
 
-// => ["milkTea", "milkTea", "milkTea", "milkTea", "milkTea", "milkTea"]
+根据以上代码可知，getTea 函数增加为两个参数的函数，现在它接收一个函数作为第一个参数，杯数作为第二个参数。
 
 
 </section>
