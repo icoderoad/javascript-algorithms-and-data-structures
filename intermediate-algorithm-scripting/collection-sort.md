@@ -34,16 +34,17 @@ arguments 对象不是一个 Array 。它类似于 Array，但除了 length 属�
 练习完整代码如下所示：
 
 function collectionSort(){
-  var concatArr = [];
-  var i = 0;
-  while (arguments[i]) {
-    concatArr = concatArr.concat(arguments[i]);
-    i++;
-  }
-  uniqueArray = concatArr.filter(function(item, pos) {
-    return concatArr.indexOf(item) == pos;
+  var newArr;
+  var args = Array.prototype.slice.call(arguments);
+  newArr = args.reduce(function(arrA, arrB) {
+    return arrA.concat(
+      arrB.filter(function(i) {
+        return arrA.indexOf(i) === -1;
+      })
+    );
   });
-  return uniqueArray;
+
+  return newArr;
 }
 
 console.log( collectionSort([51, 32, 13], [75, 2, 81, 32], [11, 63], [63, 32, 41]) );
